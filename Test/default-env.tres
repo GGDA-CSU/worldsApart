@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=2]
+
+[resource]
+
+Button/colors/font_color = Color( 0.315725, 0.22316, 0.761719, 1 )
+_sections_unfolded = [ "Button", "Button/colors" ]
+

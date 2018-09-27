@@ -1,0 +1,87 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Scene1.gd" type="Script" id=1]
+[ext_resource path="res://assets/Idle (1).png" type="Texture" id=2]
+[ext_resource path="res://mySprite.gd" type="Script" id=3]
+[ext_resource path="res://assets/Knight_Walk.png" type="Texture" id=4]
+[ext_resource path="res://myAtlasSprite.gd" type="Script" id=5]
+[ext_resource path="res://assets/JumpAttack (1).png" type="Texture" id=6]
+[ext_resource path="res://assets/JumpAttack (2).png" type="Texture" id=7]
+[ext_resource path="res://assets/JumpAttack (3).png" type="Texture" id=8]
+[ext_resource path="res://assets/JumpAttack (4).png" type="Texture" id=9]
+[ext_resource path="res://assets/JumpAttack (5).png" type="Texture" id=10]
+[ext_resource path="res://assets/JumpAttack (6).png" type="Texture" id=11]
+[ext_resource path="res://assets/JumpAttack (7).png" type="Texture" id=12]
+[ext_resource path="res://assets/JumpAttack (8).png" type="Texture" id=13]
+[ext_resource path="res://assets/JumpAttack (9).png" type="Texture" id=14]
+[ext_resource path="res://assets/JumpAttack (10).png" type="Texture" id=15]
+[ext_resource path="res://assets/Run (1).png" type="Texture" id=16]
+[ext_resource path="res://assets/Run (2).png" type="Texture" id=17]
+[ext_resource path="res://assets/Run (3).png" type="Texture" id=18]
+[ext_resource path="res://assets/Run (4).png" type="Texture" id=19]
+[ext_resource path="res://assets/Run (5).png" type="Texture" id=20]
+[ext_resource path="res://assets/Run (6).png" type="Texture" id=21]
+[ext_resource path="res://assets/Run (7).png" type="Texture" id=22]
+[ext_resource path="res://assets/Run (8).png" type="Texture" id=23]
+[ext_resource path="res://assets/Run (9).png" type="Texture" id=24]
+[ext_resource path="res://assets/Run (10).png" type="Texture" id=25]
+[ext_resource path="res://AnimatedSprite.gd" type="Script" id=26]
+
+[sub_resource type="AtlasTexture" id=1]
+
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 2935, 1414 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "jumpAttack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[node name="Node" type="Node" index="0"]
+
+script = ExtResource( 1 )
+radius = 2
+myImage = null
+
+[node name="mySprite" type="Sprite" parent="." index="0"]
+
+visible = false
+position = Vector2( 173.039, 140.293 )
+scale = Vector2( 0.25023, 0.275507 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="myAtlasSprite" type="Sprite" parent="." index="1"]
+
+visible = false
+position = Vector2( 527.876, 286.627 )
+scale = Vector2( 0.31444, 0.333292 )
+texture = SubResource( 1 )
+vframes = 2
+hframes = 5
+script = ExtResource( 5 )
+_sections_unfolded = [ "Animation" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
+
+position = Vector2( 505.863, 279.023 )
+scale = Vector2( 0.359162, 0.387083 )
+frames = SubResource( 2 )
+animation = "jumpAttack"
+frame = 5
+script = ExtResource( 26 )
+
+
