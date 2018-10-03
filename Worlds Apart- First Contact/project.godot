@@ -11,7 +11,12 @@ config_version=3
 [application]
 
 config/name="Worlds Apart- First Contact"
+run/main_scene="res://Start.tscn"
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "SMRT" )
 
 [rendering]
 
