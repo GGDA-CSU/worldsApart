@@ -565,17 +565,17 @@ func agregate(text_id):
 	text_list.set_item_text(currentText, text.text.substr(0,25))
 	text.frame_position  = frame_position.get_selected()
 	text.face_position = face_position.get_selected()
-	text.face_frame = face_frame.get("range/value")
+	text.face_frame = face_frame.get("value")
 	
-	text.typewriter = typewriter.get("is_pressed")
-	text.typewriter_speed = typewriter_speed.get("range/value")
-	text.beep = beep.get("is_pressed")
+	text.typewriter = typewriter.get("pressed")
+	text.typewriter_speed = typewriter_speed.get("value")
+	text.beep = beep.get("pressed")
 	
-	text.beep_pitch = beep_pitch.get("range/value")
+	text.beep_pitch = beep_pitch.get("value")
 	text.text = textEditor.get_text()
-	text.enable_question = enableQuestion.get("is_pressed")
+	text.enable_question = enableQuestion.get("pressed")
 	
-	if enableQuestion.get("is_pressed"):
+	if enableQuestion.get("pressed"):
 		text.answers.resize(choicesNumber.get_value())
 		for i in range(choicesNumber.get_value()):
 			text.answers[i] = options.get_child(i).get_node("text").get_text()
