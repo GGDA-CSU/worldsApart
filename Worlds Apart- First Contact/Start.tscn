@@ -1,35 +1,99 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Start.gd" type="Script" id=1]
-[ext_resource path="res://assets/serena.png" type="Texture" id=2]
-[ext_resource path="res://Sprite.gd" type="Script" id=3]
-[ext_resource path="res://addons/SMRT/dialog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/Start.gd" type="Script" id=1]
+[ext_resource path="res://addons/SMRT/dialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/player.gd" type="Script" id=3]
+[ext_resource path="res://assets/serena.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 48.9428
+height = 100.608
 
 [node name="Node" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
 
-position = Vector2( 503.965, 311.819 )
-scale = Vector2( 0.616083, 0.616083 )
-texture = ExtResource( 2 )
-script = ExtResource( 3 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
-
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="testDia" parent="CanvasLayer" index="0" instance=ExtResource( 4 )]
+[node name="testDia" parent="CanvasLayer" index="0" instance=ExtResource( 2 )]
 
+visible = false
 margin_left = 155.0
 margin_top = 429.0
 margin_right = 896.0
 margin_bottom = 555.0
 language = "res://dialogue/test.lan"
+
+[node name="player" type="KinematicBody2D" parent="." index="1"]
+
+position = Vector2( 503.965, 311.819 )
+scale = Vector2( 0.616083, 0.616083 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="player" index="0"]
+
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" index="1"]
+
+position = Vector2( -5.25031, 7.90503 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="player" index="2"]
+
+anchor_mode = 1
+rotating = false
+current = false
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="Walls" type="Node2D" parent="." index="2"]
+
+[node name="wall0" type="StaticBody2D" parent="Walls" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/wall0" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 714, 212, 715, 409, 584, 475, 434, 490, 319, 470, 218, 414, 177, 466, 288, 524, 428, 546, 595, 525, 756, 439, 773, 400, 771, 189, 708, 152 )
 
 
