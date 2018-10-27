@@ -16,5 +16,13 @@ func _physics_process(delta):
 		motion.y = -MOVE_SPEED
 	elif Input.is_action_pressed("ui_down"):
 		motion.y = MOVE_SPEED
+	elif Input.is_key_pressed(KEY_A):
+		motion.x = -MOVE_SPEED
+	elif Input.is_key_pressed(KEY_D):
+		motion.x = MOVE_SPEED
+	elif Input.is_key_pressed(KEY_W):
+		motion.y = -MOVE_SPEED
+	elif Input.is_key_pressed(KEY_S):
+		motion.y = MOVE_SPEED
 		
 	motion = move_and_slide(motion, UP)
